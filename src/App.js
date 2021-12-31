@@ -5,10 +5,13 @@ import Web3 from "web3";
 import "./App.css";
 
 const web3 = new Web3(Web3.givenProvider);
+
 const contractAddress = "0xAf6744A0242aC65Cc886775c24990C7e4EE743ed";
 const storageContract = new web3.eth.Contract(simpleStorage, contractAddress);
 
 function App() {
+  const [number, setUint] = useState(0);
+  const [getNumber, setGet] = useState("0");
   return (
     <div className="App">
       <header className="App-header">
