@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import React, { useState } from "react";
 import { simpleStorage } from "./abi/abi";
 import Web3 from "web3";
@@ -35,26 +34,34 @@ function App() {
 
   const numberGet = async (t) => {
     t.preventDefault();
+    // retrieves our set number and setGet passes in the new value we declared
     const post = await storageContract.methods.get().call();
     setGet(post);
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <div className="card">
+        <form className="form" onSubmit={numberSet}>
+          <label>
+            Set your uint256:
+            <input
+              className="input"
+              type="text"
+              name="name"
+              onChange={(t) => setUint(t.target.value)}
+            />
+          </label>
+          <button className="button" type="submit" value="Confirm">
+            Confirm
+          </button>
+        </form>
+        <br />
+        <button className="button" onClick={numberGet} type="button">
+          Get your uint256
+        </button>
+        {getNumber}
+      </div>
     </div>
   );
 }
