@@ -1,5 +1,8 @@
 import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { simpleStorage } from "./abi/abi";
+import Web3 from "web3";
+import "./App.css";
 
 function App() {
   return (
